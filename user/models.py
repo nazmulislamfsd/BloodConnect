@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from user.manager import CustomUserManager
+from cloudinary.models import CloudinaryField
 # from blood.models import BloodGroup
 
 # Create your models here.
@@ -19,7 +20,7 @@ class CustomUser(AbstractUser):
     last_donate = models.DateField(blank=True, null=True)
     availability_status = models.BooleanField(default=False)
     # profile
-    profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True)
+    profile_image = CloudinaryField('image', blank=True, null=True)
     bio = models.TextField(max_length=400, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

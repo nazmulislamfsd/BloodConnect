@@ -1,4 +1,5 @@
 from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer
 from django.contrib.auth import get_user_model
 
@@ -31,6 +32,7 @@ class CustomUserCreateSerializer(ModelSerializer):
 
 # custom user update serializer (***UPDATE OPERATION)
 class CustomUserUpdateSerializer(ModelSerializer):
+    profile_image = serializers.ImageField()
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'address', 'phone', 'age', 'blood_group', 'last_donate', 'availability_status', 'are_you_donor', 'profile_image', 'bio']
